@@ -77,9 +77,9 @@ span {
 .hover:hover {
   background-color: rgba(220, 200, 200, 1);
 }
-.hidden {
+/* .hidden {
   visibility: hidden;
-}
+} */
 
 /*---------------------footer--------------------*/
 footer {

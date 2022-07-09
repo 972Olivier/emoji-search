@@ -5,22 +5,24 @@ const Line = (props) => {
   const setMouseEvent = props.setMouseEvent;
   // console.log("this is data in line==>", data[0].title);
 
-  const list = data.map((element) => {
+  return data.map((element, index) => {
     //-------------------------Regex pour filtrer le json en fonction de la recherche
     //-------------------------renvoie pour chaque element trouvé la div de l'émoji avec array.map
     const regex = new RegExp(`${search}`, "i");
     const result = regex.test(element.title); //------s'il trouve une correspondance "true"
 
     // console.log(result);
-    if (result === true) {
-      return (
+    // console.log(index);
+    return (
+      result === true && (
         <div
+          id={`div${index}`}
           className="hover"
           onMouseOver={() => {
-            setMouseEvent("Click to copy !"); // fait l'action sur toutes les "div"
+            setMouseEvent("visible");
           }}
           onMouseOut={() => {
-            setMouseEvent(""); // fait l'action sur toutes les divs
+            setMouseEvent("hidden");
           }}
         >
           <div className="emoji">
@@ -29,15 +31,11 @@ const Line = (props) => {
             </p>
             <p>{element.title}</p>
           </div>
-          <p>{mouseEvent}</p>
+          <p style={{ visibility: mouseEvent }}>Click to copy !</p>
         </div>
-      );
-    }
-    return result; // <=== j'ai mis cela pour enlever l'erreur ci-dessous provisoirement
-    //Line 8:35:  Array.prototype.map() expects a value to be returned at the end of arrow function
+      )
+    );
   });
-  // console.log(list);
-  return list;
 };
 
 export default Line;
