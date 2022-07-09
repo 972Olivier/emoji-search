@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import Search from "./components/Search";
+import Line from "./components/Line";
+import Footer from "./components/Footer";
+import { useState } from "react";
+import emojiList from "./assets/emojiList.json";
+// console.log("this is===>", emojiList);
 function App() {
+  const [search, setSearch] = useState("");
+  const [mouse, setMouse] = useState("hidden");
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Search find={search} changeFind={setSearch}></Search>
+      <main>
+        <Line
+          find={search}
+          data={emojiList}
+          mouseEvent={mouse}
+          setMouseEvent={setMouse}
+        ></Line>
+      </main>
+      <Footer></Footer>
     </div>
   );
 }
