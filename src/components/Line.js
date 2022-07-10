@@ -1,8 +1,8 @@
 const Line = (props) => {
   const search = props.find;
   const data = props.data;
-  const mouseEvent = props.mouseEvent;
-  const setMouseEvent = props.setMouseEvent;
+  // const mouseEvent = props.mouseEvent;
+  // const setMouseEvent = props.setMouseEvent;
   // console.log("this is data in line==>", data[0].title);
 
   return data.map((element, index) => {
@@ -15,23 +15,37 @@ const Line = (props) => {
     // console.log(index);
     return (
       result === true && (
-        <div
-          id={`div${index}`}
-          className="hover"
-          onMouseOver={() => {
-            setMouseEvent("visible");
-          }}
-          onMouseOut={() => {
-            setMouseEvent("hidden");
-          }}
-        >
-          <div className="emoji">
-            <p>
-              <span> {element.symbol}</span>
-            </p>
-            <p>{element.title}</p>
+        <div className="click">
+          <div
+            id={`div${index}`}
+            className="hover"
+            // onMouseOver={() => {
+            //   setMouseEvent("visible");// fait apparaitre tous les "click to copy"
+            // }}
+            // onMouseOut={() => {
+            //   setMouseEvent("hidden");// fait disparaître tous les "click to copy"
+            // }}
+            onClick={() => {
+              const textToCopy = element.symbol;
+              navigator.clipboard
+                .writeText(textToCopy)
+                .then(() => {
+                  alert(`Copied!`);
+                })
+                .catch((error) => {
+                  alert(`Copy failed! ${error}`);
+                });
+            }}
+          >
+            <div className="emoji">
+              <p>
+                <span> {element.symbol}</span>
+              </p>
+              <p>{element.title}</p>
+            </div>
           </div>
-          <p style={{ visibility: mouseEvent }}>Click to copy !</p>
+          <p className="hidden">Click to copy !</p>
+          {/* //style={{ visibility: mouseEvent }} */}
         </div>
       )
     );

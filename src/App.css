@@ -41,27 +41,49 @@ input {
 }
 
 /*-----------------main--------------------------*/
-main div:not(.emoji) {
-  display: flex;
-  margin: 0 auto;
-  width: 1024px;
-  height: 50px;
-  /* border: solid 1px black; */
-  margin-top: 10px;
-  background-color: #fdfbfc;
-  border: black 1px solid;
-  justify-content: space-between;
-  align-items: center;
-  padding-left: 10px;
-  padding-right: 10px;
-  box-sizing: border-box;
-}
+
 main div p {
   font-size: 16px;
 }
 main div span {
   font-size: 25px;
 }
+.click {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 1024px;
+  height: 50px;
+  /* border: solid black 1px; */
+
+  margin-bottom: 10px;
+  position: relative;
+}
+.click:hover {
+  background-color: rgba(220, 200, 200, 1);
+}
+
+.hover {
+  background-color: #f7efef;
+  position: absolute;
+}
+
+.hover:hover {
+  background: none;
+  cursor: pointer;
+}
+.hover:not(.emoji) {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  /* border: solid 1px yellow; */
+
+  align-items: center;
+  padding-left: 20px;
+  box-sizing: border-box;
+}
+
 .emoji {
   display: flex;
   align-items: center;
@@ -74,12 +96,9 @@ span {
   margin-right: 10px;
 }
 
-.hover:hover {
-  background-color: rgba(220, 200, 200, 1);
+.hidden {
+  margin-right: 20px;
 }
-/* .hidden {
-  visibility: hidden;
-} */
 
 /*---------------------footer--------------------*/
 footer {
